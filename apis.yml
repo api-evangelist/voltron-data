@@ -1,8 +1,28 @@
 aid: voltron-data
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/voltron-data.png
 name: Voltron Data
-description: Voltron Data is a company surfaced as a portfolio company of battery-ventures, gv, lightspeed-venture-partners
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: >-
+  Voltron Data is a Mountain View-based data infrastructure company (founded 2021) behind
+  Theseus, a GPU-accelerated, composable distributed SQL query engine for petabyte-scale
+  analytics and AI pipelines, distributed embedded through partners rather than as a
+  self-serve public API. The company is a major steward of the open-source composable data
+  stack — Apache Arrow, Ibis, Substrait, Arrow Flight SQL, and ADBC — acquired Claypot AI in
+  January 2024, and is backed by Battery Ventures, GV, Lightspeed Venture Partners, and
+  Walden Catalyst, with an Accenture investment in 2025. As of 2026-07-21 the company
+  website (voltrondata.com) is unreachable — the domain is registered but its DNS zone is
+  lame-delegated — leaving the GitHub organization as the live public surface; no public
+  API, SDK packages, or developer portal are published.
 url: https://raw.githubusercontent.com/api-evangelist/voltron-data/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -14,9 +34,16 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
+- Data
+- Analytics
+- GPU
+- SQL
+- Query Engines
+- Apache Arrow
+- Open Source
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,4 +52,15 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: http://voltrondata.com
+  url: https://voltrondata.com
+- type: GitHubOrganization
+  url: https://github.com/voltrondata
+- type: DomainSecurity
+  url: security/voltron-data-domain-security.yml
+- type: LLMsTxt
+  url: llms/voltron-data-llms.txt
+x-enrichment:
+  date: '2026-07-21'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v1

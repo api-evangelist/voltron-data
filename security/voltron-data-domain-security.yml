@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: probed
+source: dig (8.8.8.8 + authoritative), DNS-over-HTTPS (dns.google, cloudflare-dns.com), whois, curl
+note: >-
+  voltrondata.com is registered and ACTIVE (Amazon Registrar, expiry 2026-10-18,
+  delegated to awsdns nameservers) but the Route 53 hosted zone behind the
+  delegation no longer answers: all four delegated nameservers return REFUSED
+  for every query (lame delegation), so the domain fails to resolve globally
+  (SERVFAIL at Google and Cloudflare public resolvers). The website, docs, and
+  any subdomains are unreachable as of this probe. The last successful Wayback
+  Machine capture of https://voltrondata.com/ was 2026-02-13 (HTTP 200).
+hosts:
+  - host: voltrondata.com
+    resolves: false
+    https: false
+    error: 'DNS SERVFAIL — delegated nameservers (ns-368.awsdns-46.com et al.) return REFUSED (lame delegation)'
+  - host: www.voltrondata.com
+    resolves: false
+    https: false
+    error: 'DNS SERVFAIL — same lame-delegated zone'
+domains:
+  - domain: voltrondata.com
+    registered: true
+    registrar: Amazon Registrar, Inc.
+    expiry: '2026-10-18'
+    nameservers:
+      - ns-368.awsdns-46.com
+      - ns-761.awsdns-31.net
+      - ns-1358.awsdns-41.org
+      - ns-1934.awsdns-49.co.uk
+    delegation: lame (authoritative servers REFUSED all queries at probe time)
+    dnssec: null
+    caa: null
+    spf: null
+    dmarc: null
+    record_note: 'DNSSEC/CAA/SPF/DMARC unprobeable — the entire zone returns REFUSED, so no records of any type are served'
+evidence:
+  - kind: doh
+    source: https://dns.google/resolve?name=voltrondata.com&type=A
+    result: 'Status 2 (SERVFAIL): "Name servers refused query (lame delegation?)" — all four awsdns hosts rcode=REFUSED'
+  - kind: doh
+    source: https://cloudflare-dns.com/dns-query?name=voltrondata.com&type=A
+    result: 'Status 2 (SERVFAIL): EDE 22 "No Reachable Authority at delegation voltrondata.com", EDE 23 REFUSED'
+  - kind: whois
+    source: whois voltrondata.com
+    result: 'ACTIVE, Amazon Registrar, Registry Expiry 2026-10-18, clientTransferProhibited, awsdns nameservers'
+  - kind: wayback
+    source: http://archive.org/wayback/available?url=voltrondata.com&timestamp=20260721
+    result: 'closest snapshot 2026-02-13 (status 200) — site was live in mid-February 2026'
